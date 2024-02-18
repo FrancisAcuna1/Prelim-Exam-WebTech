@@ -9,14 +9,9 @@ import { useRouter } from "next/navigation";
 
 const Comments = () => {
     const router = useRouter();
-    // const search = useSearchParams();
-    // const postIdFromQuery = search.get('postId');
-    // const [postId, setPostId] = useState(postIdFromQuery);
     const {postId} = router.query;
     const [user, setUser] = useState([]);
     const [comment, setComment] = useState([]);
-    // const search = useSearchParams();s
-    // const postId = search.get('postId');
 
 
 
@@ -30,7 +25,7 @@ const Comments = () => {
             };
       
             fetchCommnet();
-    }, []);
+    }, [postId]);
     return ( <>
         <Navbar/>
         <Button variant="contained" color="success" onClick={() => router.back()} sx={{marginTop:'100px', marginLeft: '40px'}}>Go Back</Button>

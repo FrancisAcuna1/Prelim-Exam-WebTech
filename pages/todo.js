@@ -13,16 +13,10 @@ import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 const Todo = () => {
     const [todo, setTodo] = useState([]);
     const [user, setUser] = useState(null);
-    const search = useSearchParams();
-    const userIdFromQuery = search.get('userId');
-    const [userId, setUserId] = useState(userIdFromQuery);
-    // const userId = search.get('userId');
+    const { userId } = router.query;
     const router = useRouter();
 
     useEffect(() => {
-        if (!userIdFromQuery){
-            return;
-        }
         const fetchUserTodo = () => {
             fetch(`https://jsonplaceholder.typicode.com/users/${userId}/todos`)
                 .then(response => response.json())
@@ -42,7 +36,7 @@ const Todo = () => {
             
         }
         fetchUsers();
-    }, [userIdFromQuery])
+    }, [userId])
 
 
 
